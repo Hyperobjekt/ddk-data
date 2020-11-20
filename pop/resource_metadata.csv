@@ -1,0 +1,4 @@
+name,type,value
+title,string,Child population data
+description,string,Number of children aged 0-17 years by race/ethnicity from the American Community Survey
+file,string,pop.csv

@@ -1,0 +1,4 @@
+name,type,value
+title,string,COI 2.0 index data
+description,string,"Child Opportunity Levels, Scores and averaged z-scores for the overall index and three domains"
+file,string,index.csv

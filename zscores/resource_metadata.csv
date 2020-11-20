@@ -1,0 +1,4 @@
+name,type,value
+title,string,COI 2.0 component indicators
+description,string,Z-scores
+file,string,zscores.csv

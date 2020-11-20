@@ -1,0 +1,4 @@
+name,type,value
+title,string,COI 2.0 component indicators
+description,string,Raw indicator values
+file,string,raw.csv
