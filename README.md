@@ -2,10 +2,10 @@
 
 To publish a new version of the data:
 
-1. Add the new data files. Be sure to add the files to the appropriate type directory, `county`, `state`, `tract`, or `zip`.
+1. Add the new data files. Be sure to add the files to the appropriate type directory, `counties`, `states`, `tracts`, or `zips`.
 2. The data processor assumes the following directory structure `shapetype > [index/pop/raw/zscores] > [index/pop/raw/zscores].csv`. For example: 
 ```
-tract
+tracts
   index
     dictionary.csv
     index.csv
@@ -22,7 +22,7 @@ tract
     dictionary.csv
     zscores.csv
     resource_metadata.csv
-state
+states
   index
     dictionary.csv
     index.csv
