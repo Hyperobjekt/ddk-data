@@ -42,7 +42,7 @@ states
 ...
 ```
 3. Exceptions to the above structure include:
-  - `./states/StateFips/Usps.csv`
+  - `./states/StateFipsUsps.csv`
   - The barcharts directory, which assumes the following paths:
   ```
   barcharts
