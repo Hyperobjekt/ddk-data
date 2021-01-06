@@ -54,4 +54,4 @@ states
 2. Commit new data files to `master`.
 2. Tag the commit and increment the version number, using [semantic versioning](https://semver.org/).
 3. Push `master` to origin.
-4. Merge `master` into `deploy` and push to origin. :fire::fire::fire:Pushing to `deploy` triggers a new data build (for Mapbox tilesets and all other data loaded by the app) using the tag as the data version.  So if you push the new data without updating the tag it will overwrite the tilesets and data files for the current version.:fire::fire::fire:
+4. Merge `master` into `deploy` and push to origin. :fire::fire::fire:**Be careful.** Pushing to `deploy` triggers a new data build (for Mapbox tilesets and all other data loaded by the app) using the tag as the data version.  So if you push the new data without updating the tag it will overwrite the tilesets and data files for the current version (which might be in use by the staging or production sites).:fire::fire::fire:
