@@ -2,7 +2,8 @@
 
 To publish a new version of the data:
 
-1. Add the new data files. Be sure to add the files to the appropriate type directory, `counties`, `states`, `tracts`, or `zips`.
+1. Check out the `master` branch (or create a branch of `master` that you will merge back into `master`).
+1. Drop in the updated data files. Be sure to add the files to the appropriate type directory, `counties`, `states`, `tracts`, or `zips`.
 2. The data processor assumes the following directory structure `shapetype > [index/pop/raw/zscores] > [index/pop/raw/zscores].csv`. For example:
 ```
 tracts
