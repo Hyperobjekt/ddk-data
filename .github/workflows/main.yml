@@ -50,13 +50,14 @@ jobs:
           echo DEBUG=1 >> .env
           cat .env
 
-      - name: Run nwb build
-        run: nwb build-react-component --copy-files
+      - name: Run build docker image
+        run:
 
-      - name: Deploy 🚀
-        uses: crazy-max/ghaction-github-pages@v1
-        with:
-          target_branch: gh-pages
-          build_dir: demo/dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run docker process files
+        run:
+
+      - name: Run docker generate dots 2010
+        run:
+
+      - name: Run docker generate dots 2010
+        run:
