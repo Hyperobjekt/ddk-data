@@ -9,27 +9,18 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  container:
+    runs-on: ubuntu-latest
+    container: hyperobjekt/ddk-etl
+    steps:
+      - run:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-      - name: Set up Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '12.x'
-
-      - name: Install npm packages
-        run: npm install
-
-      - name: Install nwb globally
-        run: npm install nwb -g
-
+      # Create .env file to be used by docker build.
       - name: Create .env file
         run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
         run: |
@@ -49,15 +40,7 @@ jobs:
           echo BAR_CHARTS=1 >> .env
           echo DEBUG=1 >> .env
           cat .env
-
       - name: Run build docker image
-        run:
-
-      - name: Run docker process files
-        run:
-
-      - name: Run docker generate dots 2010
-        run:
-
-      - name: Run docker generate dots 2010
-        run:
+        run: docker build -t hyperobjekt/ddk-etl .
+      - name: Run docker image
+        run: docker run --env-file .env hyperobjekt/ddk-etl
