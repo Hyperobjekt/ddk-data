@@ -1,15 +1,11 @@
-# This is a basic workflow to help you get started with Actions
-name: Staging CI
+name: Build and run data processing pipeline
 
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
+# Triggers the workflow on push of a new tag to origin.
 on:
   push:
     tags:
       - 'v*.*.*'
-    # branches: trigger-deploy
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -46,8 +42,8 @@ jobs:
           cat .env
       - name: Pull down docker image
         run: docker pull hyperobjekt/ddk-etl
-      - name: Tree
-        run: tree .
+      - name: Check out code
+        uses: actions/checkout@v2
       - name: Build docker image
         run: docker build . -t hyperobjekt/ddk-etl
       - name: Run docker image
