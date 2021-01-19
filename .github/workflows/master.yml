@@ -40,8 +40,9 @@ jobs:
           UPLOAD_MAPBOX_POINTS=1 >> .env
           echo DEBUG=1 >> .env
           cat .env
-      - name: Build docker image
+      - name: Check out code
         uses: actions/checkout@v2
+      - name: Build docker image
         run: docker build . --pull --no-cache -t hyperobjekt/ddk-etl
       - name: Run docker image
         run: docker run --env-file .env hyperobjekt/ddk-etl
