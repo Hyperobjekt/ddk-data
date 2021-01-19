@@ -9,9 +9,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  container:
+  build:
     runs-on: ubuntu-latest
-    container: hyperobjekt/ddk-etl
     steps:
       - name: Create .env file
         run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
@@ -34,7 +33,9 @@ jobs:
           UPLOAD_MAPBOX_POINTS=1 >> .env
           echo DEBUG=1 >> .env
           cat .env
-      - name: Run build docker image
-        run: docker build -t hyperobjekt/ddk-etl .
+      - name: Pull down docker image
+        run: docker pull hyperobjekt:ddk-etl
+      - name: Build docker image
+        run: docker build -t hyperobjekt:ddk-etl .
       - name: Run docker image
         run: docker run --env-file .env hyperobjekt/ddk-etl
