@@ -53,5 +53,10 @@ states
   ```
 2. Commit new data files to `master`.
 2. Tag the commit and increment the version number, using [semantic versioning](https://semver.org/).
+```bash
+git tag # list local tags
+git tag 1.0.3 # add a tag
+git push origin 1.0.3 # push your local tag to remote
+```
 3. Push `master` to origin.
 4. Merge `master` into `trigger-deploy` and push to origin. :fire::fire::fire:**Be careful.** Pushing to `trigger-deploy` triggers a new data build (for Mapbox tilesets and all other data loaded by the app) using the tag as the data version.  So if you push the new data without updating the tag it will overwrite the tilesets and data files for the current version (which might be in use by the staging or production sites).:fire::fire::fire:
