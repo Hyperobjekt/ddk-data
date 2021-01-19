@@ -51,13 +51,14 @@ states
     nation.csv
     stateusps.csv
   ```
-5. Check out a new branch off of `master`. Update files as needed. Preserve the existing file structure.
-6. Commit your changes and merge them back into master. Push `master` to `origin`.
-7. Tag the commit and increment the version number, using [semantic versioning](https://semver.org/). :fire::fire::fire:**Be careful.** Pushing a new version triggers a new data build (for Mapbox tilesets and all other data loaded by the app).:fire::fire::fire:
+5. Commit your changes and merge them back into master. Push `master` to `origin`.
+6. Tag the commit and increment the version number, using [semantic versioning](https://semver.org/). :fire::fire::fire: **Be careful.** Pushing a new version triggers a new data build (for Mapbox tilesets and all other data loaded by the app). :fire::fire::fire:
 ```bash
 git tag # list local tags
 git tag v1.0.3 # add a tag
 git push origin v1.0.3 # push your local tag to remote
 ```
+
+## Docker Configuration
 
 For `.env` configuration, which is done in `.github/workflows/master.yml`, review the [README for the ddk-etl repository](https://github.com/Hyperobjekt/ddk-etl).
