@@ -36,6 +36,6 @@ jobs:
           echo DEBUG=1 >> .env
           cat .env
       - name: Pull docker image
-        docker pull hyperobjekt/ddk-etl
+        run: docker pull hyperobjekt/ddk-etl
       - name: Run docker image
         run: docker run --env-file .env hyperobjekt/ddk-etl
