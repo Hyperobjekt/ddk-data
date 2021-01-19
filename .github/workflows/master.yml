@@ -10,12 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Dump github context
-        run:   echo "$GITHUB_CONTEXT"
-        shell: bash
-        env:
-         GITHUB_CONTEXT: ${{ toJson(github) }}
-      - name: Set output
+      - name: Set variables output
         id: vars
         run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
       - name: Write .env file
@@ -40,9 +35,7 @@ jobs:
           UPLOAD_MAPBOX_POINTS=1 >> .env
           echo DEBUG=1 >> .env
           cat .env
-      - name: Check out code
-        uses: actions/checkout@v2
-      - name: Build docker image
-        run: docker build . --pull --no-cache -t hyperobjekt/ddk-etl
+      - name: Pull docker image
+        docker pull hyperobjekt/ddk-etl
       - name: Run docker image
         run: docker run --env-file .env hyperobjekt/ddk-etl
