@@ -26,8 +26,6 @@ jobs:
         env:
           RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
         run: |
-          # echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-          # echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
           touch .env
           echo RAW_DATA_PATH=https://github.com/$GITHUB_REPOSITORY/archive/ >> .env
           echo DATA_BUCKET={{ secrets.DATA_BUCKET }} >> .env
@@ -46,9 +44,7 @@ jobs:
           UPLOAD_MAPBOX_POINTS=1 >> .env
           echo DEBUG=1 >> .env
           cat .env
-      - name: Pull down docker image
-        run: docker pull hyperobjekt/ddk-etl
       - name: Build docker image
-        run: docker build -t hyperobjekt/ddk-etl
+        run: docker build . --pull --no-cache --tag hyperobjekt/ddk-etl
       - name: Run docker image
         run: docker run --env-file .env hyperobjekt/ddk-etl
