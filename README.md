@@ -55,8 +55,8 @@ states
 6. Tag the commit and increment the version number, using [semantic versioning](https://semver.org/). :fire::fire::fire: **Be careful.** Pushing a new version triggers a new data build (for Mapbox tilesets and all other data loaded by the app). :fire::fire::fire:
 ```bash
 git tag # list local tags
-git tag v1.0.3 # add a tag
-git push origin v1.0.3 # push your local tag to remote
+git tag 1.0.3 # add a tag, don't put a "v" at the beginning
+git push origin 1.0.3 # push your local tag to remote
 ```
 
 ## Docker Configuration
