@@ -31,8 +31,8 @@ jobs:
           echo BUILD_TYPES=${{ secrets.BUILD_TYPES }} >> .env
           echo BUILD_METRO_LIST=1 >> .env
           echo BAR_CHARTS=1 >> .env
-          UPLOAD_MAPBOX_SHAPES=1 >> .env
-          UPLOAD_MAPBOX_POINTS=1 >> .env
+          echo UPLOAD_MAPBOX_SHAPES=1 >> .env
+          echo UPLOAD_MAPBOX_POINTS=1 >> .env
           echo DEBUG=1 >> .env
           cat .env
       - name: Pull docker image
