@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # - name: Set git tag
+      #   run: echo “::set-env name=VERSION_TAG::$VERSION_TAG”
       #   run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
       # - name: Write .env file
       #   env:
@@ -18,9 +19,11 @@ jobs:
       # - name: Set variables output
       #   id: vars
       #   run: echo ::set-output name=tag::${ echo $(git describe --tags --abbrev=0) }
+      - name: Set git tag
+        run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
       - name: Write .env file
         env:
-          RELEASE_VERSION: ${{ git describe --tags --abbrev=0 }}
+          RELEASE_VERSION: ${{ env.GIT_TAG }}
         run: |
           touch .env
           echo RAW_DATA_PATH=https://github.com/$GITHUB_REPOSITORY/archive/ >> .env
