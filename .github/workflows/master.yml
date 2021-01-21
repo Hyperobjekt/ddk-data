@@ -7,7 +7,7 @@ on:
       - '*.*.*'
 
 jobs:
-  build:
+  shapes-and-data-files:
     runs-on: ubuntu-latest
     steps:
       - name: Set variables output
@@ -32,7 +32,77 @@ jobs:
           echo BUILD_METRO_LIST=1 >> .env
           echo BAR_CHARTS=1 >> .env
           echo UPLOAD_MAPBOX_SHAPES=1 >> .env
+          echo UPLOAD_MAPBOX_POINTS=0 >> .env
+          echo MAPBOX_POINTS_YEAR=10 >> .env
+          echo MAPBOX_POINTS_DEMOGRAPHICS=ai,ap,b,hi,w >> .env
+          echo DEBUG=1 >> .env
+          cat .env
+      - name: Pull docker image
+        run: docker pull hyperobjekt/ddk-etl
+      - name: Run docker image
+        run: docker run --env-file .env hyperobjekt/ddk-etl
+  points-10:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set variables output
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      - name: Write .env file
+        env:
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+        run: |
+          touch .env
+          echo RAW_DATA_PATH=https://github.com/$GITHUB_REPOSITORY/archive/ >> .env
+          echo DATA_BUCKET=${{ secrets.DATA_BUCKET }} >> .env
+          echo AWS_ACCESS_ID=${{ secrets.AWS_ACCESS_ID }} >> .env
+          echo AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} >> .env
+          echo MAPBOX_USERNAME=${{ secrets.MAPBOX_USERNAME }} >> .env
+          echo MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }} >> .env
+          echo DATA_VERSION=$RELEASE_VERSION >> .env
+          echo DEPLOY=0 >> .env
+          echo CLEAN=1 >> .env
+          echo BUILD_GEOJSON=0 >> .env
+          echo BUILD_TYPES=${{ secrets.BUILD_TYPES }} >> .env
+          echo BUILD_METRO_LIST=1 >> .env
+          echo BAR_CHARTS=1 >> .env
+          echo UPLOAD_MAPBOX_SHAPES=0 >> .env
           echo UPLOAD_MAPBOX_POINTS=1 >> .env
+          echo MAPBOX_POINTS_YEAR=10 >> .env
+          echo MAPBOX_POINTS_DEMOGRAPHICS=ai,ap,b,hi,w >> .env
+          echo DEBUG=1 >> .env
+          cat .env
+      - name: Pull docker image
+        run: docker pull hyperobjekt/ddk-etl
+      - name: Run docker image
+        run: docker run --env-file .env hyperobjekt/ddk-etl
+  points-15:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set variables output
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      - name: Write .env file
+        env:
+          RELEASE_VERSION: ${{ steps.vars.outputs.tag }}
+        run: |
+          touch .env
+          echo RAW_DATA_PATH=https://github.com/$GITHUB_REPOSITORY/archive/ >> .env
+          echo DATA_BUCKET=${{ secrets.DATA_BUCKET }} >> .env
+          echo AWS_ACCESS_ID=${{ secrets.AWS_ACCESS_ID }} >> .env
+          echo AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} >> .env
+          echo MAPBOX_USERNAME=${{ secrets.MAPBOX_USERNAME }} >> .env
+          echo MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }} >> .env
+          echo DATA_VERSION=$RELEASE_VERSION >> .env
+          echo DEPLOY=0 >> .env
+          echo CLEAN=1 >> .env
+          echo BUILD_GEOJSON=0 >> .env
+          echo BUILD_TYPES=${{ secrets.BUILD_TYPES }} >> .env
+          echo BUILD_METRO_LIST=1 >> .env
+          echo BAR_CHARTS=1 >> .env
+          echo UPLOAD_MAPBOX_SHAPES=0 >> .env
+          echo UPLOAD_MAPBOX_POINTS=1 >> .env
+          echo MAPBOX_POINTS_YEAR=15 >> .env
+          echo MAPBOX_POINTS_DEMOGRAPHICS=ai,ap,b,hi,w >> .env
           echo DEBUG=1 >> .env
           cat .env
       - name: Pull docker image
