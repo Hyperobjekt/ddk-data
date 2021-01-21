@@ -30,9 +30,15 @@ jobs:
         run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
       - name: Echo git tag
         run: echo $GIT_TAG
+      - uses: actions/checkout@v2.2.0
+        with:
+          fetch-depth: 0
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
       - name: Write .env file
         env:
-          RELEASE_VERSION: echo $GIT_TAG
+          RELEASE_VERSION: ${{ steps.previoustag.outputs.tag }}
         run: |
           touch .env
           echo RAW_DATA_PATH=https://github.com/$GITHUB_REPOSITORY/archive/ >> .env
