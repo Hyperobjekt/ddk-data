@@ -1,0 +1,46 @@
+name: Build and run data processing pipeline, data files only, no tilesets
+
+# Triggers the workflow on push to origin/build-data-only.
+on:
+  push:
+    branch:
+      - 'build-data-only'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.2.0
+        with:
+          fetch-depth: 0
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      - name: Write .env file
+        env:
+          RELEASE_VERSION: ${{ steps.previoustag.outputs.tag }}
+        run: |
+          touch .env
+          echo RAW_DATA_PATH=https://github.com/$GITHUB_REPOSITORY/archive/ >> .env
+          echo DATA_BUCKET=${{ secrets.DATA_BUCKET }} >> .env
+          echo AWS_ACCESS_ID=${{ secrets.AWS_ACCESS_ID }} >> .env
+          echo AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }} >> .env
+          echo MAPBOX_USERNAME=${{ secrets.MAPBOX_USERNAME }} >> .env
+          echo MAPBOX_TOKEN=${{ secrets.MAPBOX_TOKEN }} >> .env
+          echo DATA_VERSION=$RELEASE_VERSION >> .env
+          echo DEPLOY=1 >> .env
+          echo CLEAN=1 >> .env
+          echo BUILD_GEOJSON=0 >> .env
+          echo BUILD_TYPES=${{ secrets.BUILD_TYPES }} >> .env
+          echo BUILD_METRO_LIST=1 >> .env
+          echo BAR_CHARTS=1 >> .env
+          echo UPLOAD_MAPBOX_SHAPES=0 >> .env
+          echo UPLOAD_MAPBOX_POINTS=0 >> .env
+          echo MAPBOX_POINTS_YEAR=10 >> .env
+          echo MAPBOX_POINTS_DEMOGRAPHICS=ai,ap,b,hi,w >> .env
+          echo DEBUG=1 >> .env
+          cat .env
+      - name: Pull docker image
+        run: docker pull hyperobjekt/ddk-etl
+      - name: Run docker image
+        run: docker run --env-file .env hyperobjekt/ddk-etl
