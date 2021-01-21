@@ -19,6 +19,13 @@ jobs:
       # - name: Set variables output
       #   id: vars
       #   run: echo ::set-output name=tag::${ echo $(git describe --tags --abbrev=0) }
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+        if: runner.os != 'Windows'
+      - name: Show GitHub ref
+        run: echo "$GITHUB_REF"
       - name: Set git tag
         run: echo "GIT_TAG=`echo $(git describe --tags --abbrev=0)`" >> $GITHUB_ENV
       - name: Echo git tag
