@@ -20,7 +20,7 @@ jobs:
       #   run: echo ::set-output name=tag::${ echo $(git describe --tags --abbrev=0) }
       - name: Write .env file
         env:
-          RELEASE_VERSION: ${{ $(git describe --tags --abbrev=0) }}
+          RELEASE_VERSION: ${{ git describe --tags --abbrev=0 }}
         run: |
           touch .env
           echo RAW_DATA_PATH=https://github.com/$GITHUB_REPOSITORY/archive/ >> .env
