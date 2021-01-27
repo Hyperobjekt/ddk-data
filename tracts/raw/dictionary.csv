@@ -25,8 +25,8 @@ HE_WALK,numeric,Walkability,EPA Walkability Index.,yes,1,1,9.150089224,20,0,0,,1
 HE_VACANCY,numeric,Housing vacancy rate,Percentage housing units that are vacant.,yes,1,0,8.784955423,100,0,0,,0
 HE_SUPRFND,numeric,Hazardous waste dump sites,"Average number of Superfund sites within a 2-mile radius, converted to natural log units.",yes,1,-13.815511,-12.98933386,1.6094379,1,0,,0
 HE_RSEI,numeric,"Industrial pollutants in air, water or soil","Index of toxic chemicals released by industrial facilities, converted to natural log units.",yes,1,-17.749453,6.299897892,17.235495,0,0,,0
-HE_PM25,numeric,Airborne microparticles,Mean estimated microparticle (PM2.5) concentration.,yes,1,2.64165,9.620389636,17.050674,0,0,mcm,0
-HE_OZONE,numeric,Ozone concentration,Mean estimated 8-hour average ozone concentration.,yes,1,18.650421,38.83165815,56.985355,0,0,ppb,0
+HE_PM25,numeric,Airborne microparticles,Mean estimated microparticle (PM2.5) concentration.,yes,1,2.64165,9.620389636,17.050674,0,0,UNIT_MCM,0
+HE_OZONE,numeric,Ozone concentration,Mean estimated 8-hour average ozone concentration.,yes,1,18.650421,38.83165815,56.985355,0,0,UNIT_PPB,0
 HE_HEAT,numeric,Extreme heat exposure,Summer days with maximum temperature above 90F.,yes,1,0,41.12632846,145.33333,0,0,,0
 HE_HLTHINS,numeric,Health insurance coverage,Percentage individuals ages 0-64 with health insurance coverage.,yes,1,0,85.394774,100,0,0,,1
 SE_EMPRAT,numeric,Employment rate,Percentage adults ages 25-54 who are employed.,yes,1,0,75.00934547,100,0,0,,1
@@ -37,5 +37,3 @@ SE_HOME,numeric,Homeownership rate,Percentage owner-occupied housing units.,yes,
 SE_OCC,numeric,High-skill employment,"Percentage individuals ages 16 and over employed in management, business, financial, computer, engineering, science, education, legal, community service, health care practitioner, health technology, arts and media occupations.",yes,1,0,34.92249071,100,0,0,,1
 SE_MHE,numeric,Median household income,Median income of all households.,yes,1,2499,61083.62837,266907,0,1,,1
 SE_SINGLE,numeric,Single-headed households,Percentage family households that are single-parent headed.,yes,1,0,35.92984142,100,0,0,,0
-mcm,,&#181;g/m&#0179;,Micrograms per cubic meter,,,,,,,,,
-ppb,,ppb,Parts per billion,,,,,,,,,
