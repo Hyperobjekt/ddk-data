@@ -3,6 +3,8 @@ name: Build and run data processing pipeline
 # Triggers the workflow on push of a new tag to origin.
 on:
   push:
+    branches:
+      - master
     tags:
       - '*.*.*'
 

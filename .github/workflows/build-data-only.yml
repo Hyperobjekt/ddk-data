@@ -3,8 +3,10 @@ name: Build and run data processing pipeline, data files only, no tilesets
 # Triggers the workflow on push to origin/build-data-only.
 on:
   push:
-    branch:
+    branches:
       - 'build-data-only'
+    branches-ignore:
+      - master
 
 jobs:
   build:
