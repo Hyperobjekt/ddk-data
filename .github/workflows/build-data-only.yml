@@ -5,8 +5,6 @@ on:
   push:
     branches:
       - 'build-data-only'
-    branches-ignore:
-      - master
 
 jobs:
   build:
