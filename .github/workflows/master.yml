@@ -32,6 +32,7 @@ jobs:
           echo BUILD_METRO_LIST=1 >> .env
           echo BAR_CHARTS=1 >> .env
           echo UPLOAD_MAPBOX_SHAPES=1 >> .env
+          echo SHAPES_YEARS=10,15 >> .env
           echo UPLOAD_MAPBOX_POINTS=0 >> .env
           echo MAPBOX_POINTS_YEAR=10 >> .env
           echo MAPBOX_POINTS_DEMOGRAPHICS=ai,ap,b,hi,w >> .env
@@ -66,6 +67,7 @@ jobs:
           echo BUILD_METRO_LIST=1 >> .env
           echo BAR_CHARTS=1 >> .env
           echo UPLOAD_MAPBOX_SHAPES=0 >> .env
+          echo SHAPES_YEARS=10,15 >> .env
           echo UPLOAD_MAPBOX_POINTS=1 >> .env
           echo MAPBOX_POINTS_YEAR=10 >> .env
           echo MAPBOX_POINTS_DEMOGRAPHICS=ai,ap,b,hi,w >> .env
@@ -100,6 +102,7 @@ jobs:
           echo BUILD_METRO_LIST=1 >> .env
           echo BAR_CHARTS=1 >> .env
           echo UPLOAD_MAPBOX_SHAPES=0 >> .env
+          echo SHAPES_YEARS=10,15 >> .env
           echo UPLOAD_MAPBOX_POINTS=1 >> .env
           echo MAPBOX_POINTS_YEAR=15 >> .env
           echo MAPBOX_POINTS_DEMOGRAPHICS=ai,ap,b,hi,w >> .env
