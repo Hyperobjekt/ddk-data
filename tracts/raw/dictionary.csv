@@ -14,7 +14,7 @@ ED_ECENROL,numeric,Early childhood education enrollment,"Percentage 3- and 4-yea
 ED_READING,numeric,Third grade reading proficiency,"Percentage third graders scoring proficient on standardized reading tests, converted to NAEP scale score points.",yes,1,8.6164036,202.4469128,536.16168,0,0,,1
 ED_MATH,numeric,Third grade math proficiency,"Percentage third graders scoring proficient on standardized math tests, converted to NAEP scale score points.",yes,1,7.3544545,221.7577649,504.96603,0,0,,1
 ED_HSGRAD,numeric,High school graduation rate,Percentage ninth graders graduating from high school on time.,yes,1,0.59361291,76.68369476,100,0,0,,1
-ED_APENR,numeric,Advanced Placement course enrollment,Ratio of students enrolled in at least one AP course to the number of 11th and 12th graders.,yes,1,0,0.346101337,2.2300479,2,0,,1
+ED_APENR,numeric,Advanced Placement course enrollment,Ratio of students enrolled in at least one AP course to the number of 11th and 12th graders.,yes,1,0,0.346101337,2.2300479,1,0,,1
 ED_COLLEGE,numeric,College enrollment in nearby institutions,Percentage 18-24 year-olds enrolled in college within 25-mile radius.,yes,1,0.15895869,41.00879669,100,0,0,,1
 ED_SCHPOV,numeric,School poverty,Percentage students in elementary schools eligible for free or reduced-price lunches.,yes,1,0,55.6811855,100,0,0,,0
 ED_TEACHXP,numeric,Teacher experience,Percentage teachers in their first and second year.,yes,1,0,11.71492626,100,0,0,,0
